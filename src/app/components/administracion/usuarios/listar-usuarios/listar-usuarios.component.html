@@ -1,0 +1,82 @@
+<div class="wrapper">
+
+    <app-navbar></app-navbar>
+  
+    <app-sidebar></app-sidebar>
+  
+    <div class="content-wrapper">
+  
+      <section class="content">
+  
+        <div class="container-fluid">
+  
+          <app-title [title]="title" 
+                     [breadcrumbtitle]="breadcrumbtitle" 
+                     [breadcrumbtitle2]="breadcrumbtitle2">
+          </app-title>
+          <app-loading *ngIf="loading"></app-loading>        
+          <div *ngIf="!loading">
+            <div class="card">    
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Nombre</th>
+                        <th>Apellido(s)</th>
+                        <th>Correo Electrónico</th>
+                        <th>Perfil</th>
+                        <th>Activo</th>              
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let lista of listado; let i = index">
+                        <td>{{ i+1 }}</td>   
+                        <td>{{ lista.givenname }}</td>                             
+                        <td>{{ lista.familyname }}</td>                             
+                        <td>{{ lista.email }}</td>   
+                        <td>
+                          <span *ngIf="lista.role == 'ADMIN_ROLE'" class="badge badge-success">
+                            {{ lista.role }}
+                          </span>
+                          <span *ngIf="lista.role == 'TEACHER_ROLE'" class="badge badge-primary">
+                            {{ lista.role }}
+                          </span>
+                          <span *ngIf="lista.role == 'STUDENT_ROLE'" class="badge badge-warning">
+                            {{ lista.role }}
+                          </span>
+                          <span *ngIf="lista.role == 'USER_ROLE'" class="badge badge-danger">
+                            {{ lista.role }}
+                          </span>
+                        </td>   
+                        <td>
+                          <span *ngIf="lista.status == true" class="badge badge-primary">
+                            Si
+                          </span>
+                          <span *ngIf="lista.status == false" class="badge badge-danger">
+                            No
+                          </span>
+                        </td>                                                            
+                      </tr>         
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <a class="btn btn-primary" routerLink="/crearusuarios">
+              Nuevo Usuario
+            </a>
+  
+          </div>
+  
+        </div>
+  
+      </section>  
+      
+    </div>
+  
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+  
+  </div>

@@ -1,0 +1,77 @@
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a routerLink="/home" class="brand-link" style="text-align: center;">      
+      <span class="brand-text font-weight-light">
+        <img src="../../../assets/logo.PNG" width="130px">
+      </span>
+    </a>    
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <!--<div class="image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>-->
+        <div class="info">
+          <a href="#" class="d-block">
+            {{ (_usService.leerNombreUsuario().length>25) ? 
+               (_usService.leerNombreUsuario() | slice:0:26)+' ..' : 
+               (_usService.leerNombreUsuario()) 
+            }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item has-treeview">
+            <a class="nav-link" routerLinkActive="active" routerLink="/home">
+              <i class="nav-icon fa fa-tachometer"></i>
+              <p>
+                Dashboard
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-cogs"></i>
+              <p>               
+                Administración       
+                <i class="right fa fa-angle-left"></i>         
+              </p>
+            </a>          
+             <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/listarusuarios">
+                  <i class="fa fa-circle-thin nav-icon"></i>
+                  <p>Usuarios</p>
+                </a>
+              </li>           
+            </ul>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">  
+              <i class="nav-icon fa fa-cog"></i>      
+              <p>                
+                Configuración
+                <i class="right fa fa-angle-left"></i>   
+              </p>
+            </a>      
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a class="nav-link" routerLinkActive="active" routerLink="/listarobras">
+                  <i class="fa fa-circle-thin nav-icon"></i>
+                  <p>Código QR</p>
+                </a>
+              </li>           
+            </ul>  
+          </li> 
+               
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
