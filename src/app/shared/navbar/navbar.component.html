@@ -25,7 +25,7 @@
                   {{ (_usService.leerNombreUsuario().length>25) ? 
                     (_usService.leerNombreUsuario() | slice:0:26)+' ..' : 
                     (_usService.leerNombreUsuario()) 
-                 }}       
+                  }}       
                 </h3>              
                 <p class="text-sm text-muted">
                   {{ _usService.leerRoleUsuario() }}

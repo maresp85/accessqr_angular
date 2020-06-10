@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OrdenesService } from 'src/app/services/ordenes.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { ConfiguracionService } from 'src/app/services/configuracion.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home',
@@ -9,26 +10,34 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class HomeComponent implements OnInit {
 
+  title: string = "Registro de Personal";
+  breadcrumbtitle: string = "Listado";
+  breadcrumbtitle2: string = "Acceso";
   loading: boolean = false;
-  estado1: any;
-  estado2: any;
-  estado3: any;
-  estado4: any;
+  listado: any = [];
 
-  constructor(private _orService: OrdenesService,
+  constructor(private _conService: ConfiguracionService,
               private _usService: UsuarioService) { }
 
   ngOnInit() {
     this.loading = true;
-    let empresa: any = this._usService.leerEmpresaUsuario();
-    this._orService.getOrdenesConteoEstado(empresa)
-                   .subscribe((res: any) => {  
-                      this.loading = false;           
-                      this.estado1 = res.conteo[0];             
-                      this.estado2 = res.conteo[1];             
-                      this.estado3 = res.conteo[2];             
-                      this.estado4 = res.conteo[3];             
-                   }, error => { this.loading = false }); 
+    this._conService.getAccess()
+                    .subscribe((res: any) => {        
+                      this.loading = false;  
+                      this.listado = res['accessDB'];     
+                    }, error => {
+                      this.error();
+                    });   
+  }
+
+  error() {
+    this.loading = false;   
+    Swal.fire({    
+      text: 'Ocurrió un error, intente de nuevo',
+      icon: 'error',
+      confirmButtonText: 'OK',
+      allowOutsideClick: false
+    });                    
   }
 
 }

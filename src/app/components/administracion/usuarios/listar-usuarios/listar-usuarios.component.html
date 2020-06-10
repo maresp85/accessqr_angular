@@ -38,16 +38,16 @@
                         <td>{{ lista.email }}</td>   
                         <td>
                           <span *ngIf="lista.role == 'ADMIN_ROLE'" class="badge badge-success">
-                            {{ lista.role }}
+                            ADMINISTRADOR
                           </span>
                           <span *ngIf="lista.role == 'TEACHER_ROLE'" class="badge badge-primary">
-                            {{ lista.role }}
+                            PROFESOR
                           </span>
                           <span *ngIf="lista.role == 'STUDENT_ROLE'" class="badge badge-warning">
-                            {{ lista.role }}
+                            ESTUDIANTE
                           </span>
                           <span *ngIf="lista.role == 'USER_ROLE'" class="badge badge-danger">
-                            {{ lista.role }}
+                            SIN IDENTIFICAR
                           </span>
                         </td>   
                         <td>

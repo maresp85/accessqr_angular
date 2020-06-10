@@ -20,7 +20,6 @@ registerLocaleData(localeEsCo, 'es-Co');
 //Rutas
 import { ROUTES } from "./app.routes";
 //Servicios
-import { OrdenesService } from './services/ordenes.service';
 import { UsuarioService } from './services/usuario.service';
 import { ConfiguracionService } from './services/configuracion.service';
 //Componentes shared
@@ -33,12 +32,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 //Componentes administración
 import { ListarUsuariosComponent } from './components/administracion/usuarios/listar-usuarios/listar-usuarios.component';
-import { CrearUsuariosComponent } from './components/administracion/usuarios/crear-usuarios/crear-usuarios.component';
-import { EditarUsuariosComponent } from './components/administracion/usuarios/editar-usuarios/editar-usuarios.component';
-import { EditarUsuariosClaveComponent } from './components/administracion/usuarios/editar-usuarios-clave/editar-usuarios-clave.component';
 //Componentes configuración
-import { ListarObrasComponent } from './components/configuracion/obras/listar-obras/listar-obras.component';
-import { CrearObrasComponent } from './components/configuracion/obras/crear-obras/crear-obras.component';
+import { ListarCodigoComponent } from './components/configuracion/codigos/listar-codigos/listar-codigo.component';
+
 
 @NgModule({
   declarations: [
@@ -49,12 +45,8 @@ import { CrearObrasComponent } from './components/configuracion/obras/crear-obra
     TitleComponent,    
     HomeComponent,    
     LoginComponent,
-    ListarObrasComponent,
-    CrearObrasComponent,
-    CrearUsuariosComponent,
-    ListarUsuariosComponent,
-    EditarUsuariosComponent,
-    EditarUsuariosClaveComponent,
+    ListarCodigoComponent,
+    ListarUsuariosComponent,    
   ],
   imports: [
     BrowserModule,
@@ -65,8 +57,7 @@ import { CrearObrasComponent } from './components/configuracion/obras/crear-obra
     ReactiveFormsModule,
     RouterModule.forRoot( ROUTES, { useHash: true } )
   ],
-  providers: [OrdenesService, 
-              UsuarioService, 
+  providers: [UsuarioService, 
               ConfiguracionService,
               { provide: LOCALE_ID, useValue: "es" },
             ],
